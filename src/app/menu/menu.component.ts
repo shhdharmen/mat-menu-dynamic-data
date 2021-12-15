@@ -1,3 +1,5 @@
+// src/app/menu/menu.component.ts
+
 import { Component, Input, ViewChild } from "@angular/core";
 import { MatMenu } from "@angular/material/menu";
 import { DynamicDatabase } from "../dynamic-database.service";
@@ -11,11 +13,8 @@ export class MenuComponent {
   @Input() trigger = "Trigger";
   @Input() isRootNode = false;
 
-  @ViewChild("menu") public matMenu!: MatMenu;
-
   isLoading = false;
   dataLoaded = false;
-  keepMenuOpen = false;
 
   constructor(private database: DynamicDatabase) {}
 

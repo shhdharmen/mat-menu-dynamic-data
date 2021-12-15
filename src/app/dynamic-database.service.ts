@@ -1,10 +1,6 @@
 import { Injectable } from "@angular/core";
 import { delay, of } from "rxjs";
 
-/**
- * Database for dynamic data. When expanding a node in the tree, the data source will need to fetch
- * the descendants data from the database.
- */
 @Injectable({ providedIn: "root" })
 export class DynamicDatabase {
   dataMap = new Map<string, string[]>([
@@ -15,9 +11,11 @@ export class DynamicDatabase {
     ["Macintosh", ["Yellow", "White", "Purple"]],
   ]);
 
+  // this can also come from database as initial data
   rootLevelNodes: string[] = ["Fruits", "Vegetables"];
 
   getChildren(node: string) {
+    // adding delay to mock a REST API call
     return of(this.dataMap.get(node)).pipe(delay(1000));
   }
 

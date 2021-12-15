@@ -1,3 +1,5 @@
+<!-- src/app/menu/menu.component.html -->
+
 <button *ngIf="isRootNode" mat-button [matMenuTriggerFor]="menu">
   {{ trigger }}
 </button>
@@ -5,7 +7,7 @@
   *ngIf="!isRootNode"
   mat-menu-item
   [matMenuTriggerFor]="menu"
-  (click)="getData(trigger)"
+  (menuOpened)="getData(trigger)"
 >
   {{ trigger }}
 </button>
@@ -15,10 +17,7 @@
     *ngIf="isLoading"
     style="display: flex; justify-content: center; align-items: center"
   >
-    <mat-progress-spinner
-      mode="indeterminate"
-      diameter="24"
-    ></mat-progress-spinner>
+    <mat-spinner mode="indeterminate" diameter="24"></mat-spinner>
   </button>
   <ng-container *ngFor="let node of data; let i = index">
     <button mat-menu-item style="padding: 0">
